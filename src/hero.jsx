@@ -122,7 +122,7 @@ const HeroSection = ({ t }) => (
     <video
       ref={(el) => { if (el) { el.muted = true; const p = el.play && el.play(); if (p && p.catch) p.catch(() => {}); } }}
       autoPlay muted loop playsInline preload="auto" poster="assets/hero-poster.jpg"
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}>
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', zIndex: 0 }}>
       <source src="assets/hero-video.mp4" type="video/mp4" />
     </video>
 
