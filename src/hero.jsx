@@ -118,24 +118,17 @@ const Navbar = ({ t }) => {
 /* ── Hero Section ── */
 const HeroSection = ({ t }) => (
   <section style={{ height: '100vh', position: 'relative', display: 'flex', flexDirection: 'column', overflow: 'hidden', background: '#000' }}>
-    {/* Blurred fill layer — fills the frame edge-to-edge so there are NO black bars */}
-    <video
-      ref={(el) => { if (el) { el.muted = true; const p = el.play && el.play(); if (p && p.catch) p.catch(() => {}); } }}
-      autoPlay muted loop playsInline preload="auto" aria-hidden="true"
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'blur(28px)', transform: 'scale(1.12)', zIndex: 0 }}>
-      <source src="assets/hero-video.mp4" type="video/mp4" />
-    </video>
-    {/* Sharp full-frame video on top — the entire scene (whole pool) stays visible, uncropped */}
+    {/* Background video — real footage fills the entire hero edge-to-edge (no bars, no blur) */}
     <video
       ref={(el) => { if (el) { el.muted = true; const p = el.play && el.play(); if (p && p.catch) p.catch(() => {}); } }}
       autoPlay muted loop playsInline preload="auto" poster="assets/hero-poster.jpg"
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', zIndex: 1 }}>
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%', zIndex: 0 }}>
       <source src="assets/hero-video.mp4" type="video/mp4" />
     </video>
 
     {/* Dark gradient overlay */}
     <div style={{
-      position: 'absolute', inset: 0, zIndex: 2,
+      position: 'absolute', inset: 0, zIndex: 1,
       background: `linear-gradient(180deg, rgba(0,0,0,${t.overlayDarkness}) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,${t.overlayDarkness + 0.15}) 100%)`,
       pointerEvents: 'none',
     }} />
