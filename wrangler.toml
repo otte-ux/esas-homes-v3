@@ -1,0 +1,9 @@
+# Cloudflare Workers — static assets (no build step needed).
+# `npx wrangler deploy` uploads everything in ./ that isn't in .assetsignore
+# and serves index.html. This matches the existing esas-homes-v3 Worker.
+name = "esas-homes-v3"
+compatibility_date = "2025-06-01"
+
+[assets]
+directory = "./"
+not_found_handling = "single-page-application"

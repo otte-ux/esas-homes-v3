@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESAS HOMES — Luxury Real Estate Istanbul</title>
+    <meta name="description" content="ESAS Homes — curated ultra-luxury residences and bespoke developments in Istanbul's most prestigious locations. Premium real estate since 2009.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Favicon (existing ESAS logo) -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Social share -->
+    <meta property="og:title" content="ESAS HOMES — Luxury Real Estate Istanbul">
+    <meta property="og:description" content="Curated ultra-luxury residences and bespoke developments in Istanbul's most prestigious locations.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/hero-poster.jpg">
+
+    <!-- Perf: warm up connections used above the fold -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://esashomes.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Perf: fetch hero media early so the background video appears fast -->
+    <link rel="preload" as="image" href="assets/hero-poster.jpg">
+    <link rel="preload" as="video" href="assets/hero-video.mp4" type="video/mp4">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#000;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        img{display:block;max-width:100%}
+        a{text-decoration:none;color:inherit}
+        button{border:none;background:none;cursor:pointer;font-family:inherit;color:inherit}
+        p{text-wrap:pretty}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#000}
+        ::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:#555}
+
+        /* Liquid Glass */
+        .liquid-glass{background:rgba(255,255,255,0.01);background-blend-mode:luminosity;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,0.1);position:relative;overflow:hidden;transition:background .3s ease}
+        .liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;background:linear-gradient(180deg,rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.15) 80%,rgba(255,255,255,0.45) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+        .liquid-glass:hover{background:rgba(255,255,255,0.04)}
+
+        /* Animations */
+        @keyframes blurFadeUp{from{opacity:0;filter:blur(20px);transform:translateY(40px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+        .animate-blur-fade-up{opacity:0;animation:blurFadeUp 1s ease-out forwards}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+        @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+        /* Logo slide animation */
+        @keyframes logoSlide{from{opacity:0;filter:blur(8px);transform:translateY(-60px)}to{opacity:0.85;filter:blur(0);transform:translateY(0)}}
+        /* WhatsApp pulse */
+        @keyframes whatsappPulse{0%{transform:scale(1);opacity:.4}70%{transform:scale(1.8);opacity:0}100%{transform:scale(1.8);opacity:0}}
+
+        /* Section Separator */
+        .section-separator{height:1px;background:linear-gradient(90deg,transparent 0%,rgba(200,169,110,0.3) 50%,transparent 100%)}
+
+        /* Cards */
+        .property-card{transition:transform .4s ease,box-shadow .4s ease;border-radius:16px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.06)}
+        .property-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 30px rgba(200,169,110,0.05)}
+        .property-card:hover .prop-img{transform:scale(1.05)}
+        .prop-img{transition:transform .6s ease}
+        .feature-card{transition:transform .3s ease,border-color .3s ease;border:1px solid rgba(255,255,255,0.06)}
+        .feature-card:hover{transform:translateY(-4px);border-color:rgba(200,169,110,0.2)}
+        .why-card{transition:transform .3s ease,border-color .3s ease;border:1px solid rgba(255,255,255,0.06)}
+        .why-card:hover{transform:translateY(-4px);border-color:rgba(200,169,110,0.2)}
+        .blog-card{transition:transform .3s ease;border-radius:16px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.06)}
+        .blog-card:hover{transform:translateY(-4px)}
+        .testimonial-card{background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:2rem;transition:transform .3s ease,border-color .3s ease}
+        .testimonial-card:hover{transform:translateY(-4px);border-color:rgba(200,169,110,0.15)}
+
+        /* Links */
+        .nav-link{transition:color .2s ease;color:rgba(255,255,255,0.9)}
+        .nav-link:hover{color:rgba(255,255,255,0.6)}
+        .gold-link{color:#C8A96E;transition:opacity .2s ease}
+        .gold-link:hover{opacity:0.8}
+
+        /* Responsive Grids */
+        .grid-2{display:grid;grid-template-columns:1fr;gap:1.5rem}
+        .grid-3{display:grid;grid-template-columns:1fr;gap:1.5rem}
+        .grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+        @media(min-width:640px){.grid-2{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(2,1fr)}}
+        @media(min-width:1024px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
+
+        /* Responsive Visibility */
+        .hide-below-sm{display:none !important}
+        .hide-below-md{display:none !important}
+        .hide-below-lg{display:none !important}
+        @media(min-width:640px){.hide-below-sm{display:flex !important}}
+        @media(min-width:768px){.hide-below-md{display:flex !important}}
+        @media(min-width:1024px){.hide-below-lg{display:flex !important}}
+        @media(min-width:640px){.show-below-sm{display:none !important}}
+        @media(min-width:1024px){.show-below-lg{display:none !important}}
+
+        /* Layout */
+        .container{max-width:1280px;margin:0 auto;padding:0 1rem}
+        @media(min-width:640px){.container{padding:0 1.5rem}}
+        @media(min-width:768px){.container{padding:0 3rem}}
+        .hero-content-row{display:flex;flex-direction:column;align-items:flex-end;gap:2rem}
+        @media(min-width:1024px){.hero-content-row{flex-direction:row;gap:3rem}}
+        .about-layout{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+        @media(min-width:1024px){.about-layout{grid-template-columns:1fr 1fr;gap:4rem}}
+        .hero-headline{font-size:1.875rem;font-weight:300;letter-spacing:-0.04em;line-height:1.1}
+        @media(min-width:640px){.hero-headline{font-size:3rem}}
+        @media(min-width:768px){.hero-headline{font-size:3.75rem}}
+        @media(min-width:1024px){.hero-headline{font-size:4.5rem}}
+
+        /* Navbar */
+        .navbar{position:relative;z-index:50;padding:1rem}
+        @media(min-width:640px){.navbar{padding:1.25rem 1.5rem}}
+        @media(min-width:768px){.navbar{padding:1.5rem 3rem}}
+
+        /* Hero Bottom */
+        .hero-bottom-content{padding:0 1rem 2rem}
+        @media(min-width:640px){.hero-bottom-content{padding:0 1.5rem 2rem}}
+        @media(min-width:768px){.hero-bottom-content{padding:0 3rem 4rem}}
+
+        /* Villa Card */
+        .villa-card{width:320px;border-radius:16px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.06)}
+        @media(min-width:1024px){.villa-card{width:380px}}
+        .villa-card-glow{box-shadow:0 8px 32px rgba(200,169,110,0.15),0 0 60px rgba(200,169,110,0.05)}
+        .villa-card-img{height:220px;object-fit:cover;width:100%}
+        @media(min-width:1024px){.villa-card-img{height:260px}}
+
+        /* Buttons */
+        .cta-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 2rem;border-radius:9999px;font-weight:500;font-size:.9rem;background:#fff;color:#000;transition:background .2s ease,transform .2s ease}
+        .cta-primary:hover{background:#e5e5e5;transform:scale(1.02)}
+        .cta-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 2rem;border-radius:9999px;font-weight:500;font-size:.9rem;color:#fff}
+
+        /* Micro Components */
+        .meta-row{display:flex;flex-wrap:wrap;gap:1rem}
+        @media(min-width:640px){.meta-row{gap:1.5rem}}
+        .featured-badge{background:#C8A96E;color:#000;font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:6px;letter-spacing:.05em;text-transform:uppercase}
+        .status-ready{background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.2)}
+        .status-construction{background:rgba(234,179,8,0.15);color:#eab308;border:1px solid rgba(234,179,8,0.2)}
+        .gold-icon-circle{width:56px;height:56px;border-radius:50%;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.2);display:flex;align-items:center;justify-content:center}
+        .tag-pill{font-size:.7rem;padding:4px 10px;border-radius:9999px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);white-space:nowrap}
+        .contact-pill{display:inline-flex;align-items:center;gap:.75rem;padding:.75rem 1.5rem;border-radius:9999px;font-size:.9rem}
+        .social-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);transition:background .2s ease,border-color .2s ease}
+        .social-icon:hover{background:rgba(200,169,110,0.15);border-color:rgba(200,169,110,0.3)}
+
+        /* About Images */
+        .about-images{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .about-images .img-col-2{padding-top:2rem}
+        .about-images img{border-radius:12px;width:100%;height:200px;object-fit:cover}
+        @media(min-width:768px){.about-images img{height:260px}}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- React (self-hosted production builds) -->
+    <script src="assets/vendor/react.production.min.js"></script>
+    <script src="assets/vendor/react-dom.production.min.js"></script>
+
+    <!-- Compiled, minified app (JSX pre-transpiled at build time — no in-browser Babel) -->
+    <script src="assets/app.js"></script>
+</body>
+</html>
