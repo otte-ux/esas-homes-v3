@@ -152,7 +152,7 @@ const HeroSection = ({ t }) => (
     <Navbar t={t} />
 
     {/* Hero Content */}
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 1.5rem' }}>
+    <div className="hero-content" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 1.5rem' }}>
       <div className="animate-blur-fade-up" style={{ animationDelay: '300ms', marginBottom: '1rem' }}>
         <span style={{ color: t.accentColor, fontSize: 'clamp(.7rem, 1.5vw, .85rem)', fontWeight: 600, letterSpacing: '.2em', textTransform: 'uppercase' }}>
           {t.heroSubtitle}
@@ -192,7 +192,7 @@ const HeroSection = ({ t }) => (
     </div>
 
     {/* Scroll Indicator */}
-    <div className="animate-blur-fade-up" style={{
+    <div className="animate-blur-fade-up hero-scroll" style={{
       animationDelay: '1100ms', display: 'flex', flexDirection: 'column', alignItems: 'center',
       paddingBottom: '3.5rem', gap: '.5rem', position: 'relative', zIndex: 10,
     }}>
